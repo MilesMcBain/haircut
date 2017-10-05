@@ -17,6 +17,5 @@ vector of substrings of `text` that matched the `pattern`.
 \description{
 Given a vector of chracter strings, this function returns matches as a vector.
 This allows a chainable regex filtering style that is readily compatible with `%>%`.
-All matches from the resulting regexec call are pasted together. This will create
-weird behaviour if you use capturing groups. Best to use non-capturing `(?:)`.
+Capuring groups in `()` will be ignored.  Best to use non-capturing `(?:)`.
 }

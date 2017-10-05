@@ -18,6 +18,6 @@ vector of substrings of `text` that dit not match the `pattern`.
 Given a vector of chracter strings, this function returns portions of the stirng
 that do not march a pattern, as a vector. This allows a chainable regex
 filtering style that is readily compatible with `%>%`.
-All matches from the resulting regexec call are pasted together. This will create
-weird behaviour if you use capturing groups. Best to use non-capturing `(?:)`.
+Capturing groups, `()`,  will create an error since they generate multiple matches that do not have
+a sensible inverse. Best to use non-capturing `(?:)`.
 }

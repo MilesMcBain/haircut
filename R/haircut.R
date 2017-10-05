@@ -2,8 +2,7 @@
 #'
 #' Given a vector of chracter strings, this function returns matches as a vector.
 #' This allows a chainable regex filtering style that is readily compatible with `%>%`.
-#' All matches from the resulting regexec call are pasted together. This will create
-#' weird behaviour if you use capturing groups. Best to use non-capturing `(?:)`.
+#' Capuring groups in `()` will be ignored.  Best to use non-capturing `(?:)`.
 #'
 #' @param text a vector of charcter strings to be matched.
 #' @param pattern a regular expression.
@@ -23,7 +22,7 @@
 regex_match <- function(text, pattern){
   text_matches <- regexec(text = text, pattern = pattern, perl = TRUE)
   match_content <- regmatches(text, text_matches)
-  unlist(lapply(match_content, paste0, collapse = ""))
+  unlist(lapply(match_content[[1]], paste0, collapse = ""))
 }
 
 #' Return characters not matching a regular expression
@@ -31,8 +30,8 @@ regex_match <- function(text, pattern){
 #' Given a vector of chracter strings, this function returns portions of the stirng
 #' that do not march a pattern, as a vector. This allows a chainable regex
 #' filtering style that is readily compatible with `%>%`.
-#' All matches from the resulting regexec call are pasted together. This will create
-#' weird behaviour if you use capturing groups. Best to use non-capturing `(?:)`.
+#' Capturing groups, `()`,  will create an error since they generate multiple matches that do not have
+#' a sensible inverse. Best to use non-capturing `(?:)`.
 #'
 #' @param text a vector of characer strings to be (un)matched.
 #' @param pattern a regular expression.
