@@ -21,8 +21,14 @@
 #' }
 regex_match <- function(text, pattern){
   text_matches <- regexec(text = text, pattern = pattern, perl = TRUE)
-  match_content <- regmatches(text, text_matches)
-  unlist(lapply(match_content[[1]], paste0, collapse = ""))
+  match_lengths <- lapply(text_matches,`attr`,"match.length")
+  first_matches <- lapply(text_matches, `[`, 1)
+  first_match_lengths <- lapply(match_lengths, `[`, 1)
+  first_matches_with_lengths <- mapply(function(x, m_length){attr(x,"match.length") <- m_length; x},
+    first_matches, first_match_lengths, SIMPLIFY = FALSE)
+
+  match_content <- regmatches(text, first_matches_with_lengths)
+  unlist(lapply(match_content, paste0, collapse = ""))
 }
 
 #' Return characters not matching a regular expression
