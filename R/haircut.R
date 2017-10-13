@@ -20,14 +20,14 @@
 #  "www.talyarkoni.org", "rtricks.wordpress.com")
 #' }
 regex_match <- function(text, pattern){
-  text_matches <- regexec(text = text, pattern = pattern, perl = TRUE)
-  match_lengths <- lapply(text_matches,`attr`,"match.length")
-  first_matches <- lapply(text_matches, `[`, 1)
-  first_match_lengths <- lapply(match_lengths, `[`, 1)
-  first_matches_with_lengths <- mapply(function(x, m_length){attr(x,"match.length") <- m_length; x},
-    first_matches, first_match_lengths, SIMPLIFY = FALSE)
-
-  match_content <- regmatches(text, first_matches_with_lengths)
+  text_matches <- gregexpr(text = text, pattern = pattern, perl = TRUE)
+  full_matches <- lapply(text_matches, function(match_details_vec){
+      attr(match_details_vec, "capture.length") <- NULL
+      attr(match_details_vec, "capture.start") <- NULL
+      attr(match_details_vec, "capture.names") <- NULL
+      match_details_vec
+    })
+  match_content <- regmatches(text, full_matches)
   unlist(lapply(match_content, paste0, collapse = ""))
 }
 
