@@ -1,4 +1,7 @@
 # haircut
+
+[![Travis-CI Build Status](https://travis-ci.org/MilesMcBain/haircut.svg?branch=master)](https://travis-ci.org/MilesMcBain/haircut)
+
 Give your strings a haircut with tidyverse-friendly regex.
 
 The goal of `haircut` is to provide a simple interface to regular expressions in R that covers most common usecases. It differs from base and `string*` packages by:
