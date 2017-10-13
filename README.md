@@ -1,6 +1,6 @@
 # haircut
 
-[![Travis-CI Build Status](https://travis-ci.org/MilesMcBain/haircut.svg?branch=master)](https://travis-ci.org/MilesMcBain/haircut) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/MilesMcBain/haircut?branch=master&svg=true)](https://ci.appveyor.com/project/MilesMcBain/haircut)
+[![Travis-CI Build Status](https://travis-ci.org/MilesMcBain/haircut.svg?branch=master)](https://travis-ci.org/MilesMcBain/haircut) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/MilesMcBain/haircut?branch=master&svg=true)](https://ci.appveyor.com/project/MilesMcBain/haircut)[![Coverage Status](https://img.shields.io/codecov/c/github/MilesMcBain/haircut/master.svg)](https://codecov.io/github/MilesMcBain/haircut?branch=master)
 
 Give your strings a haircut with tidyverse-friendly regex.
 
